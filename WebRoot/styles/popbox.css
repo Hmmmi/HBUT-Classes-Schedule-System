@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+td.tdLeft {
+	width: 20%;
+	min-width: 200px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+span.subtitle {
+	font-size: 13px;
+	margin-left: 5px;
+}
+
+/* 输入框关闭按钮 */
+#close {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+}
+
+/* 确定提交打回原因 */
+#confirm {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	cursor: pointer;
+}
+
+#mask {
+	background-color: #000;
+	opacity: .7;
+	filter: alpha(opacity = 70);
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+}
+
+#reason {
+	position: absolute;
+	z-index: 1001;
+}
+
+.reasonDiv {
+	width: 465px;
+	height: 286px;
+	background-image: url('/ZsGljSystem/icons/Event/background.png');
+}

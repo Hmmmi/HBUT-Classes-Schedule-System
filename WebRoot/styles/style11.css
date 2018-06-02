@@ -1,0 +1,131 @@
+#contain{
+    width: 100%;
+    height: 100%;
+    background-image: url("/HbutClassSys/icons/Login/img10.png");
+    background-size:cover;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #888;
+    position: absolute;
+}
+#i1{
+    position: absolute;
+    top: 6%;
+    left: 8%;
+}
+#h1{
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #000;
+    position: absolute;
+    top: 39px;
+    left: 111px;
+}
+#h2{
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    position: absolute;
+    top: 77px;
+    left: 111px;
+}
+#d1{
+    width: 701px;
+    height: 439px;
+    position: absolute;
+    background-image: url("/HbutClassSys/icons/Login/img11.png");
+    top: 50%;
+    left: 50%;
+    margin-left: -350px;
+    margin-top: -180px;
+}
+#d1 h1{
+    color: #000;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+    font-size: 38px;
+    letter-spacing: 3px;
+    position: absolute;
+    top:76px;
+    left: 165px;
+}
+.d10{
+    width: 350px;
+    height: 33px;
+    position: absolute;
+    top: 140px;
+    left: 174px;
+}
+.d11{
+    width: 350px;
+    height: 33px;
+    position: absolute;
+    top: 196px;
+    left: 174px;
+}
+.d12{
+    width: 350px;
+    height: 33px;
+    position: absolute;
+    top: 252px;
+    left: 174px;
+}
+.l1{
+    letter-spacing: 2px;
+    color: #201d1d;
+    font-size: 21px;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 90px;
+    height: 33px;
+    line-height: 33px;
+    position: absolute;
+    top: 0;
+    left: 3px;
+}
+.l2{
+    width: 216px;
+    height: 29px;
+    border-radius: 15px;
+    border: 2px solid #225a7f;
+    background-color: #fff;
+    color: #555;
+    font-size: 14px;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+    padding: 0 8px;
+    position: absolute;
+    top: 0;
+    right: 3px;
+}
+.d13{
+    width: 92px;
+    height: 33px;
+    position: absolute;
+    top: 310px;
+    left: 230px;
+}
+.d14{
+    width: 92px;
+    height: 33px;
+    position: absolute;
+    top: 310px;
+    right: 230px;
+}
+.l3{
+    width: 92px;
+    height: 33px;
+    border-radius: 15px;
+    background-image: url("/HbutClassSys/icons/Login/img12.png");
+    border: 0;
+    background-color: transparent;
+    color: #fff;
+    font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+.l3:hover{
+    /*box-shadow: 0 0 3px #555;*/
+    background-color: #840500;
+}
+
