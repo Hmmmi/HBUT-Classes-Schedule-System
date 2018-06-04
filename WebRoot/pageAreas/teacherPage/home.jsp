@@ -62,7 +62,7 @@
 			<Iframe id="iframeAdmin"
 				src="<%=basePath%>actionTeacher/showSchedule.action?UserNO=<%= request.getAttribute("UserNO") %>"   
 				width="100%" height="80%" style="margin-bottom: 0px;" scrolling="yes" frameborder="0">
-				</iframe>
+			</iframe>
 		</div>
 
 	</div>
