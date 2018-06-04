@@ -45,8 +45,12 @@
 			</ul>
 			<ul>
 				<li id="liStudentSchedule" class="cur"
-					onclick="setIframe('liStudentSchedule','<%=basePath%>actionStudent/showSchedule.action?UserNO=<%= request.getAttribute("UserNO") %>')"><a><i
-						class="show"></i><em>课表查看</em></a></li>
+					onclick="setIframe('liStudentSchedule','<%=basePath%>actionStudent/showSchedule.action?UserNO=<%= request.getAttribute("UserNO") %>')">
+					<a>
+						<i class="show"></i>
+						<em>课表查看</em>
+					</a>
+				</li>
 			</ul>
 			<ul>
 				<li id="lisearchRoom"
