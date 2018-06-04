@@ -41,8 +41,10 @@
 	<!-- dcHead 结束 -->
 	<div id="dcLeft">
 		<div id="menu">
+		
 			<ul class="top">
 			</ul>
+			
 			<ul>
 				<li id="liStudentSchedule" class="cur"
 					onclick="setIframe('liStudentSchedule','<%=basePath%>actionStudent/showSchedule.action?UserNO=<%= request.getAttribute("UserNO") %>')">
@@ -52,6 +54,7 @@
 					</a>
 				</li>
 			</ul>
+			
 			<ul>
 				<li id="lisearchRoom"
 					onclick="setIframe('lisearchRoom','<%=basePath%>actionStudent/searchEmptyRoom')"><a><i
@@ -59,6 +62,7 @@
 			</ul>
 			
 		</div>
+		
 	</div>
 	<div id="dcMain" style="padding-bottom: 0px; ">
 		<div class="mainBox"
