@@ -19,7 +19,7 @@ public class TeacherAction extends ActionSupport{
 	private HttpServletRequest request;
 	@SuppressWarnings("unused")
 	private HttpServletResponse response;
-	@SuppressWarnings({ "unused", "rawtypes" })
+	@SuppressWarnings("rawtypes")
 	private Map session = ActionContext.getContext().getSession();
 	private String[][] timeTable = new String[5][7];
 	
@@ -54,6 +54,17 @@ public class TeacherAction extends ActionSupport{
 	
 	public String searchEmptyRoom() {
 		return SUCCESS;
+	}
+	
+	public String addCoursePage() {
+		return SUCCESS;
+	}
+	
+	public String addCourse(){
+		String userType = session.get("UserType").toString();
+		request.setAttribute("userType",userType);
+//		System.out.println(userType+"addCourse");
+		return "RESULT";
 	}
 	
 	

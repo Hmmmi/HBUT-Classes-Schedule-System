@@ -53,6 +53,11 @@
 					onclick="setIframe('lisearchRoom','<%=basePath%>actionTeacher/searchEmptyRoom')"><a><i
 						class="show"></i><em>教室查看</em></a></li>
 			</ul>
+			<ul>
+				<li id="liaddCourse"
+					onclick="setIframe('liaddCourse','<%=basePath%>actionTeacher/addCoursePage')"><a><i
+						class="show"></i><em>添加课程</em></a></li>
+			</ul>
 			
 		</div>
 	</div>
@@ -83,6 +88,7 @@
 			//先初始化所有空间的class属性
 			$("#liTeacherSchedule").removeClass("cur");
 			$("#lisearchRoom").removeClass("cur");
+			$("#liaddCourse").removeClass("cur");
 // 			设置跳转页面为iframeSrc,并设置对应的class属性为cur
 			$("#iframeAdmin").attr("src", iframeSrc);
 			$("#" + liId).addClass("cur");

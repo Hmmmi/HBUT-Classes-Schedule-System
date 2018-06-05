@@ -18,6 +18,14 @@
 		<action name="showResult" class="com.hbut.action.RoomAction" method="showResult">
 			<result name="success">/pageAreas/showRoomResult.jsp</result>
 		</action>
+		
+		<action name="addCoursePage" class="com.hbut.action.TeacherAction" method="addCoursePage">
+			<result name="success">/pageAreas/teacherPage/addCourse.jsp</result>
+		</action>
+		
+		<action name="addCourse" class="com.hbut.action.TeacherAction" method="addCourse">
+			<result name="RESULT">/pageAreas/teacherPage/addCourse.jsp</result>
+		</action>
 	</package>
 
 </struts>
