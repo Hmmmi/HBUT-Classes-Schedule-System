@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="actionAdmin" namespace="/actionAdmin" extends="struts-default" >
+	
+		<action name="scheduleCoursePage" class="com.hbut.action.AdminAction" method="scheduleCoursePage">
+			<result name="success">/pageAreas/adminPage/scheduleCoursePage.jsp</result>
+		</action>
+		
+<!-- 		<action name="searchEmptyRoom" class="com.hbut.action.StudentAction" method="searchEmptyRoom"> -->
+<!-- 			<result name="success">/pageAreas/searchRoom.jsp</result> -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="showResult" class="com.hbut.action.RoomAction" method="showResult"> -->
+<!-- 			<result name="success">/pageAreas/showRoomResult.jsp</result> -->
+<!-- 		</action> -->
+	</package>
+
+</struts>

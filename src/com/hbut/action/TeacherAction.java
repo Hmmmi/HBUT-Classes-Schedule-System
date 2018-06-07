@@ -11,6 +11,8 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.hbut.bean.Course;
+import com.hbut.dao.CourseDao;
 import com.hbut.dao.TeachProgramDao;
 
 public class TeacherAction extends ActionSupport{
@@ -63,7 +65,14 @@ public class TeacherAction extends ActionSupport{
 	public String addCourse(){
 		String userType = session.get("UserType").toString();
 		request.setAttribute("userType",userType);
-//		System.out.println(userType+"addCourse");
+		String courseNo = request.getParameter("CourseNO");
+		String courseName = request.getParameter("CourseName");
+		int courseType = Integer.valueOf( request.getParameter("CourseType") );
+		float courseCredit = Float.valueOf( request.getParameter("Credit") );
+		int courseTime = Integer.valueOf( request.getParameter("CourseTime") );
+		Course c = new Course(courseNo,courseName,courseType,courseCredit,courseTime);
+		CourseDao.insertCourse(c);
+//		System.out.println(courseNo+" "+courseName+" "+courseType+" "+courseCredit+" "+courseTime);
 		return "RESULT";
 	}
 	

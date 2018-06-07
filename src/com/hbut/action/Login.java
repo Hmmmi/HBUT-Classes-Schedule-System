@@ -75,7 +75,8 @@ public class Login extends ActionSupport implements SessionAware {
 			conn = ConnectSQL.getConnection();
 			Statement sta = conn.createStatement();
 			
-			if(userType == 1){//学生登陆
+/****************************学生登陆*****************************/
+			if(userType == 1){
 				String stusql = "SELECT StudentNO,StudentName from hbut_student WHERE StudentName='"
 						+ userName + "' ";
 				ResultSet stuRs = sta.executeQuery(stusql);
@@ -98,6 +99,7 @@ public class Login extends ActionSupport implements SessionAware {
 				this.session.put("UserType", userType);
 				return "stuLogin";
 			}
+/****************************教师登陆*****************************/
 			else if(userType == 2){
 				String teasql = "SELECT TeacherNO,TeacherName from hbut_teacher WHERE TeacherName='"
 						+ userName + "' ";
@@ -120,6 +122,30 @@ public class Login extends ActionSupport implements SessionAware {
 				this.session.put("userName", userName);
 				this.session.put("UserType", userType);
 				return "teaLogin";
+			}
+/****************************管理员登陆*****************************/
+			else{
+				String teasql = "SELECT AdminNO,Password from hbut_admin WHERE AdminNO='"
+						+ userName + "' ";
+				ResultSet teaRs = sta.executeQuery(teasql);
+				
+				// 验证用户名，通过则从数据库取出用户数据
+				if ( teaRs != null && teaRs.next() ) {
+					if(!userNO.equals(teaRs.getString("Password"))){
+						PrintWriter pw = response.getWriter();
+						pw.write("<script language='javascript'>alert('密码输入有误'); location.href='/HbutClassSys/pageAreas/login.jsp'</script>");
+						return null;
+					}
+					userNO = teaRs.getString("Password");
+				} else {
+					PrintWriter pw = response.getWriter();
+					pw.write("<script language='javascript'>alert('用户名不存在'); location.href='/HbutClassSys/pageAreas/login.jsp'</script>");
+					return null;
+				}
+				this.session.put("userNO", userNO);
+				this.session.put("userName", userName);
+				this.session.put("UserType", userType);
+				return "adminLogin";
 			}
 		} catch (Exception e) {
 			System.out.println("数据库连接失败");

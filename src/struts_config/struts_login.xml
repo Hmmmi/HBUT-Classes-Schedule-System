@@ -10,6 +10,7 @@
 <!-- 			<result name="adminloginsuccess">/pageAreas/Admin/UserManage/userInfo.jsp</result> -->
 			<result name="stuLogin">/pageAreas/studentPage/home.jsp</result>
 			<result name="teaLogin">/pageAreas/teacherPage/home.jsp</result>
+			<result name="adminLogin">/pageAreas/adminPage/home.jsp</result>
 		</action>
  		<action name="logout" class="com.hbut.action.Login" method="logout"> 
  			<result name="success">/pageAreas/login.jsp</result> 

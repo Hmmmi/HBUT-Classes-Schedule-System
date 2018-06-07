@@ -8,5 +8,6 @@
 	<include file="struts_config/struts_teacher.xml"></include>
 	<include file="struts_config/struts_student.xml"></include>
 	<include file="struts_config/struts_searchroom.xml"></include>
+	<include file="struts_config/struts_admin.xml"></include>
 
 </struts>    

@@ -17,7 +17,7 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 
-<title>排课系统-教师</title>
+<title>排课系统-管理员</title>
 <script type="text/javascript"
 	src="<%=basePath%>script/jQuery/jquery.min.js"></script>
 <script type="text/javascript"
@@ -44,20 +44,15 @@
 			<ul class="top">
 			</ul>
 			<ul>
-				<li id="liTeacherSchedule" class="cur"
-					onclick="setIframe('liTeacherSchedule','<%=basePath%>actionTeacher/showSchedule.action?UserNO=<%= request.getAttribute("UserNO") %>')"><a><i
-						class="show"></i><em>课表查看</em></a></li>
+				<li id="liScheduleCoursePage" class="cur"
+					onclick="setIframe('liScheduleCoursePage','<%=basePath%>actionAdmin/scheduleCoursePage.action?UserNO=<%= request.getAttribute("UserNO") %>')"><a><i
+						class="show"></i><em>手动排课</em></a></li>
 			</ul>
-			<ul>
-				<li id="lisearchRoom"
-					onclick="setIframe('lisearchRoom','<%=basePath%>actionTeacher/searchEmptyRoom')"><a><i
-						class="show"></i><em>教室查看</em></a></li>
-			</ul>
-			<ul>
-				<li id="liaddCourse"
-					onclick="setIframe('liaddCourse','<%=basePath%>actionTeacher/addCoursePage')"><a><i
-						class="show"></i><em>添加课程</em></a></li>
-			</ul>
+<!-- 			<ul> -->
+<!-- 				<li id="lisearchRoom" -->
+<!-- 					onclick="setIframe('lisearchRoom','<%=basePath%>actionTeacher/searchEmptyRoom')"><a><i -->
+<!-- 						class="show"></i><em>教室查看</em></a></li> -->
+<!-- 			</ul> -->
 			
 		</div>
 	</div>
@@ -65,7 +60,7 @@
 		<div class="mainBox"
 			style="height: auto ! important; min-height: 500px; padding-top: 0px; padding-right: 0px; border-top-width: 30px; margin-top: 0px;padding-bottom: 0px;">
 			<Iframe id="iframeAdmin"
-				src="<%=basePath%>actionTeacher/showSchedule.action?UserNO=<%= request.getAttribute("UserNO") %>"   
+				src="<%=basePath%>actionAdmin/scheduleCoursePage.action?UserNO=<%= request.getAttribute("UserNO") %>"   
 				width="100%" height="80%" style="margin-bottom: 0px;" scrolling="yes" frameborder="0">
 			</iframe>
 		</div>
@@ -86,9 +81,9 @@
 		//设置页面跳转的方法
 		function setIframe(liId, iframeSrc) {
 			//先初始化所有空间的class属性
-			$("#liTeacherSchedule").removeClass("cur");
+			$("#liScheduleCoursePage").removeClass("cur");
 			$("#lisearchRoom").removeClass("cur");
-			$("#liaddCourse").removeClass("cur");
+// 			$("#liaddCourse").removeClass("cur");
 // 			设置跳转页面为iframeSrc,并设置对应的class属性为cur
 			$("#iframeAdmin").attr("src", iframeSrc);
 			$("#" + liId).addClass("cur");

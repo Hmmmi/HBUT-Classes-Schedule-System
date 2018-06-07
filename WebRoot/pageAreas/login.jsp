@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <select class="l2" style = "width: 235px;height: 34px;" id="userType" name="userType">
 							<option value="1">学生</option>
 							<option value="2">教师</option>
+							<option value="3">管理员</option>
 					</select>
 	            </div>
 	            <div class="d11">
