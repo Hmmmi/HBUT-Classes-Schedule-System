@@ -7,25 +7,19 @@ import java.sql.SQLException;
 
 import com.hbut.util.ConnectSQL;
 
-public class StudentDao {
+public class ClassDao {
 	
-	public static String getClassName(String stuNO) throws SQLException{
-		String classString = "";
+	public static ResultSet queryClass() {
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
-		String sql = "SELECT * FROM hbut_class,hbut_student "
-				+"WHERE hbut_class.ClassNO = hbut_student.ClassNO "
-				+"AND StudentNO = '"+stuNO +"' ";
+		String sql = "select ClassNO,Grade,Major,Ind from hbut_class ";
 		try {
 			PreparedStatement pstate = conn.prepareStatement(sql);
 			rs = pstate.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		while(rs != null && rs.next() ){
-			classString = rs.getString("Grade")+rs.getString("Major")+"-"+rs.getInt("Ind");
-		}
-		return classString;
+		return rs;
 	}
 
 }

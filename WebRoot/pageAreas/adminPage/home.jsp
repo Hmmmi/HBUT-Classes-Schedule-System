@@ -61,7 +61,7 @@
 			style="height: auto ! important; min-height: 500px; padding-top: 0px; padding-right: 0px; border-top-width: 30px; margin-top: 0px;padding-bottom: 0px;">
 			<Iframe id="iframeAdmin"
 				src="<%=basePath%>actionAdmin/scheduleCoursePage.action?UserNO=<%= request.getAttribute("UserNO") %>"   
-				width="100%" height="80%" style="margin-bottom: 0px;" scrolling="yes" frameborder="0">
+				width="100%" height="85%" style="margin-bottom: 0px;" scrolling="yes" frameborder="0">
 			</iframe>
 		</div>
 
@@ -70,7 +70,7 @@
 	<div id="dcFooter">
 		<div id="footer">
 			<div class="line"></div>
-			<ul><li>版权所有 © 2017-2018 HBUT，并保留所有权利。</li></ul>
+			<ul><li align = "center">版权所有 © 2017-2018 HBUT，并保留所有权利。</li></ul>
 		</div>
 	</div>
 	<!-- dcFooter 结束 -->

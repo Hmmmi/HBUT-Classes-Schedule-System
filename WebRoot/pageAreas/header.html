@@ -1,0 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<header>
+	<img class="i3" href="<%=basePath%>pageAreas/HomePage/home.jsp"
+		src="<%=basePath%>icons/Login/img14.png">
+	<h2>
+		<span
+			style="color: #fff;font-size: 15px;font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;">欢迎使用，<%=session.getAttribute("UserName")%></span>
+	</h2>
+	<img class="i4" float="right" src="<%=basePath%>icons/Home/img3.png">
+	<h3>
+		<a href="<%=basePath%>actionLogin/logout.action">注销</a>
+	</h3>
+</header>

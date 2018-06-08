@@ -75,7 +75,7 @@
 	<div id="dcFooter">
 		<div id="footer">
 			<div class="line"></div>
-			<ul><li>版权所有 © 2017-2018 HBUT，并保留所有权利。</li></ul>
+			<ul><li align="center">版权所有 © 2017-2018 HBUT，并保留所有权利。</li></ul>
 		</div>
 	</div>
 	<!-- dcFooter 结束 -->

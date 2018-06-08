@@ -29,5 +29,18 @@ public class RoomDao {
 		}
 		return rs;
 	}
+	
+	public static ResultSet queryRoom() {
+		ResultSet rs = null;
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "select RoomNO,SeatNum from hbut_room ";
+		try{
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			rs = pstate.executeQuery();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
 }
