@@ -7,6 +7,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String[] section = {"第1-2节<br>8:20-9:55","第3-4节<br>10:15-11:50","第5-6节<br>14:00-15:35","第7-8节<br>15:55-17:30","第NI节<br>18:30-20:55"};
+System.out.println("0000:"+request.getAttribute("action") );
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -70,55 +71,59 @@ select.tdIn{
   					<td class="tdBody"  style="min-width:60px"><%=section[i] %> </td>
   					<%for(int j = 0 ; j < 7 ; j++){ %>
   						<td class="tdBody" > 
-  						课程
-  						<select class = "tdIn">
-  							<option value="WU">请选择</option>
-  							<%ResultSet courseRs = CourseDao.queryCourse(); %>
-  							<%while(courseRs != null && courseRs.next() ){ %>
-  								<option value="<%=courseRs.getString("CourseNO")%>">
-  									<%=courseRs.getString("CourseName") %>
-  								</option>
-  							<%} %>
-  						</select>
-  						
-  						<br>
-  						老师
-  						<select class = "tdIn">
-  							<option value="WU">请选择</option>
-  							<%ResultSet teacherRs = TeacherDao.queryTeacher(); %>
-  							<%while(teacherRs != null && teacherRs.next() ){ %>
-  								<option value="<%=teacherRs.getString("TeacherNO")%>">
-  									<%=teacherRs.getString("TeacherName") %>
-  								</option>
-  							<%} %>
-  						</select>
-  						<br>
-  						地点
-  						<select class = "tdIn"  id="Room<%=i%><%=j%>">
-  							<option value="WU">请选择</option>
-  							<%ResultSet roomRs = RoomDao.queryRoom(); %>
-  							<%while(roomRs != null && roomRs.next() ){ %>
-  								<option value="<%=roomRs.getString("RoomNO")%>">
-  									<%=roomRs.getString("RoomNO") %>
-  								</option>
-  							<%} %>
-  						</select>
-  						<br>
-  						周数
-  						<select style="width:31%;height:28px;margin-left:0px;margin-top:12px;margin-bottom:12px;">
-  						<option value="WU">-</option>
-  						<%for(int k=1;k<21;k++){ %>
-  							<option value="<%=k%>"><%=k %></option>
-  						<%} %>
-  						
-  						</select>
-  						-
-  						<select style="width:31%;height:28px;margin-left:0px;margin-top:12px;margin-bottom:12px;">
-  							<option value="WU">-</option>
-  							<%for(int k=1;k<21;k++){ %>
-  								<option value="<%=k%>"><%=k %></option>
-  							<%} %>
-  						</select>
+						  						课程
+						  						<select id="courseNO<%=i %><%=j %>"  name="courseNO<%=i %><%=j %>"  class = "tdIn">
+						  							<option value="WU">请选择</option>
+						  							<%ResultSet courseRs = CourseDao.queryCourse(); %>
+						  							<%while(courseRs != null && courseRs.next() ){ %>
+						  								<option value="<%=courseRs.getString("CourseNO")%>">
+						  									<%=courseRs.getString("CourseName") %>
+						  								</option>
+						  							<%} %>
+						  						</select>
+						  						
+						  						<br>
+						  						老师
+						  						<select id="teacherNO<%=i %><%=j %>"  name="teacherNO<%=i %><%=j %>"   class = "tdIn">
+						  							<option value="WU">请选择</option>
+						  							<%ResultSet teacherRs = TeacherDao.queryTeacher(); %>
+						  							<%while(teacherRs != null && teacherRs.next() ){ %>
+						  								<option value="<%=teacherRs.getString("TeacherNO")%>">
+						  									<%=teacherRs.getString("TeacherName") %>
+						  								</option>
+						  							<%} %>
+						  						</select>
+						  						
+						  						<br>
+						  						地点
+						  						<select class = "tdIn"  id="roomNO<%=i%><%=j%>"  name = "roomNO<%=i%><%=j%>" >
+						  							<option value="WU">请选择</option>
+						  							<%ResultSet roomRs = RoomDao.queryRoom(); %>
+						  							<%while(roomRs != null && roomRs.next() ){ %>
+						  								<option value="<%=roomRs.getString("RoomNO")%>">
+						  									<%=roomRs.getString("RoomNO") %>
+						  								</option>
+						  							<%} %>
+						  						</select>
+						  						
+						  						<br>
+						  						周数
+						  						<select  id="startWeek<%=i %><%=j %>"  name="startWeek<%=i %><%=j %>"   
+						  								 style="width:31%;height:28px;margin-left:0px;margin-top:12px;margin-bottom:12px;">
+						  						<option value="WU">-</option>
+						  						<%for(int k=1;k<21;k++){ %>
+						  							<option value="<%=k%>"><%=k %></option>
+						  						<%} %>
+						  						
+						  						</select>
+						  						-
+						  						<select  id="endWeek<%=i %><%=j %>"  name="endWeek<%=i %><%=j %>"   
+						  								style="width:31%;height:28px;margin-left:0px;margin-top:12px;margin-bottom:12px;">
+						  							<option value="WU">-</option>
+						  							<%for(int k=1;k<21;k++){ %>
+						  								<option value="<%=k%>"><%=k %></option>
+						  							<%} %>
+						  						</select>
   						 </td>
   					<%} %>
   				</tr>
@@ -133,4 +138,7 @@ select.tdIn{
 		</div>
 		
 		</form>
+		
+	<script language="JavaScript">
+	</script>
 </html>

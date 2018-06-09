@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.hbut.bean.TeachProgramBean;
 import com.hbut.util.ConnectSQL;
 
 public class TeachProgramDao {
@@ -37,6 +38,30 @@ public class TeachProgramDao {
 			e.printStackTrace();
 		}
 		return rs;
+	}
+	
+	public static void saveTeacheProgram(TeachProgramBean tp){
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "INSERT INTO hbut_teachprogram ("
+				+ "ProgramID, CourseNO, RoomNO, ClassNO, TeacherNO, "
+				+ "StartWeek, endWeek, Section, WeekNum ) "
+				+ " VALUES ("
+				+ "'"+String.valueOf( tp.getProgramID() )+"', '"+tp.getCoureseNO()
+				+ "', '"+tp.getRoomNO()+"', '"+tp.getClassNO()+"', '"+tp.getTeacherNO()
+				+ "' ,  "+ tp.getStartWeek() + " ,  "+ tp.getEndWeek() + " ,  "+ tp.getSection()
+				+ " ,  "+ tp.getWeekNum() +"  ) ";
+		System.out.println("saveTeacheProgram:"+sql);
+		try {
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			// System.out.println(sql);
+			int rs = pstate.executeUpdate();
+			if (rs==1) {
+				System.out.println("教学计划添加成功");
+			}
+		} catch (SQLException e1) {
+			System.out.println("教学计划添加失败");
+			e1.printStackTrace();
+		}
 	}
 
 }

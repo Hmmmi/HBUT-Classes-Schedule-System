@@ -75,7 +75,7 @@ select.head{
 		$("select[name='scheduleClassNO']").bind("change",function () {
 			var scheduleClassNO = $("#scheduleClassNO option:selected").val();
 // 			alert(scheduleClassNO);
-			var url = "updateSchedule.action?"+"&scheduleClassNO="+scheduleClassNO;
+			var url = "putupdateSchedule.action?"+"&scheduleClassNO="+scheduleClassNO;
 			var frame = document.getElementById("hiddenframe"); 
 			frame.src = url;
 		})

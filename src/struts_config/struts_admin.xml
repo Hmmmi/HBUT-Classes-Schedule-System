@@ -11,6 +11,10 @@
 			<result name="success">/pageAreas/adminPage/scheduleCoursePage.jsp</result>
 		</action>
 		
+		<action name="putupdateSchedule" class="com.hbut.action.AdminAction" method="putupdateSchedule">
+ 			<result name="success">/pageAreas/adminPage/updateSchedule.jsp</result>
+		</action>
+		
 		<action name="updateSchedule" class="com.hbut.action.AdminAction" method="updateSchedule">
  			<result name="success">/pageAreas/adminPage/updateSchedule.jsp</result>
 		</action>
