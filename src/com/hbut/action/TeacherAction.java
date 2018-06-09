@@ -42,7 +42,7 @@ public class TeacherAction extends ActionSupport{
 				week = rs.getInt("WeekNum");
 				section = rs.getInt("Section");
 				String value = rs.getString("CourseName")+"<br>"
-									+rs.getString("Grade")+rs.getString("Major")+"-"+rs.getString("Index")+"<br>"
+									+rs.getString("Grade")+rs.getString("Major")+"-"+rs.getString("Ind")+"<br>"
 									+rs.getString("RoomNO")+"<br>"
 									+rs.getString("StartWeek")+"-"+rs.getString("endWeek")+"周<br>";
 				timeTable[section][week] = value;
