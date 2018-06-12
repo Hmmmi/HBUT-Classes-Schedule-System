@@ -112,18 +112,19 @@ header
 header{
     width: 100%;
     height: 70px;
-    background-image:linear-gradient(to bottom, #057620, #3CB371, #057739);
+    background-image:linear-gradient(to bottom, #999, #b5b5b5, #999);
     position: relative;
 }
 .i3{
     position: absolute;
     left: 5px;
     top: 7px;
+    height: 62px;
 }
 .i4{
     position: relative;
     float:right;
-    margin-top: 25px;
+    margin-top: 20px;
     margin-right: 1px;
 }
 header h2{
@@ -148,7 +149,7 @@ header a:hover{
 }
 .header {
     height: 70px;
-    background-image: url(/ZsGljSystem/icons/Admin/HomePage/topbg.png);
+    background-image: url(/HbutClassSys/icons/Admin/HomePage/topbg.png);
     color: white;
     font-weight: bold;
     position: relative;
@@ -522,7 +523,7 @@ select {
  overflow: hidden;
 }
 #menu li.cur {
- background: #3CB371 url(/HbutClassSys/icons/Admin/HomePage/menu_cur.gif) no-repeat right 50%;
+ background: #999 url(/HbutClassSys/icons/Admin/HomePage/menu_cur.gif) no-repeat 97%;
 }
 #menu li.cur a {
  color: #FFF;
@@ -581,7 +582,7 @@ select {
  background-image:url('/HbutClassSys/icons/Admin/HomePage/img3.png');
 }
 #menu li i.show {
- background-position: 4px 3px;
+ background-position: 12px 8px;
  background-image:url('/HbutClassSys/icons/Admin/HomePage/img4.png');
 }
 #menu li i.page {

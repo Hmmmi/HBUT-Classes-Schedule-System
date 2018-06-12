@@ -27,8 +27,8 @@
 </head>
 <body style="overflow:hidden;">
 	<header> 
-<!-- 	<img class="i3" href="<%=basePath%>pageAreas/HomePage/home.jsp" -->
-<!-- 		src="<%=basePath%>icons/Login/imgTitle.png"> -->
+	<img class="i3" href="<%=basePath%>pageAreas/HomePage/home.jsp"
+		src="<%=basePath%>icons/Login/imgTitle.png">
 	<h2>
 		<span style="color: #fff;font-size: 15px;font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;">欢迎使用，<%=request.getAttribute("UserName")%></span>
 	</h2>
