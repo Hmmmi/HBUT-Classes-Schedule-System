@@ -67,5 +67,9 @@ public class StudentAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	public String selectClass() {
+		return SUCCESS;
+	}
+	
 	
 }

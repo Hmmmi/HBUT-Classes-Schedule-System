@@ -70,8 +70,13 @@ public class TeacherAction extends ActionSupport{
 		int courseType = Integer.valueOf( request.getParameter("CourseType") );
 		float courseCredit = Float.valueOf( request.getParameter("Credit") );
 		int courseTime = Integer.valueOf( request.getParameter("CourseTime") );
+		int peopleNum = 0;
+		//如果是公选课
+		if(courseType == 3){
+			peopleNum = Integer.valueOf( request.getParameter("CoursePeople") );
+		}
 		Course c = new Course(courseNo,courseName,courseType,courseCredit,courseTime);
-		CourseDao.insertCourse(c);
+		CourseDao.saveCourse(c,peopleNum);
 //		System.out.println(courseNo+" "+courseName+" "+courseType+" "+courseCredit+" "+courseTime);
 		return "RESULT";
 	}

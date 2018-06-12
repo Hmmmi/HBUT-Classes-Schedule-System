@@ -61,6 +61,12 @@
 						class="show"></i><em>教室查看</em></a></li>
 			</ul>
 			
+			<ul>
+				<li id="liselectClass"
+					onclick="setIframe('liselectClass','<%=basePath%>actionStudent/selectClass')"><a><i
+						class="show"></i><em>选课管理</em></a></li>
+			</ul>
+			
 		</div>
 		
 	</div>
@@ -91,6 +97,7 @@
 			//先初始化所有空间的class属性
 			$("#liStudentSchedule").removeClass("cur");
 			$("#lisearchRoom").removeClass("cur");
+			$("#liselectClass").removeClass("cur");
 // 			设置跳转页面为iframeSrc,并设置对应的class属性为cur
 			$("#iframeAdmin").attr("src", iframeSrc);
 			$("#" + liId).addClass("cur");

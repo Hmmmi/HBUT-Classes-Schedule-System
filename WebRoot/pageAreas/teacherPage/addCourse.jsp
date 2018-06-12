@@ -55,6 +55,20 @@ td.tdBody {
 				style="width:99%;min-width:1070px;margin-right: 22px;">
 				
 				<tr>
+					<td class="tdLeft"><span style="font-size:16px;"><strong>课程类型：</strong></span></td>
+					
+					<td >
+						<select style="width:350px;height:36px;margin-left:5px;margin-top:12px;margin-bottom:12px;" id="CourseType" name="CourseType">
+							<option value="1">公共基础课</option>
+							<option value="2">学科基础课</option>
+							<option value="3">公选课</option>
+							<option value="4">重修课</option>
+						</select>
+					</td>
+					
+				</tr>
+				
+				<tr>
 					<td class="tdLeft"><span style="font-size:16px;"><strong>课程编号：</strong></span></td>
 					
 					<td >
@@ -75,20 +89,6 @@ td.tdBody {
 				</tr>
 				
 				<tr>
-					<td class="tdLeft"><span style="font-size:16px;"><strong>课程类型：</strong></span></td>
-					
-					<td >
-						<select style="width:350px;height:36px;margin-left:5px;margin-top:12px;margin-bottom:12px;" id="CourseType" name="CourseType">
-							<option value="1">公共基础课</option>
-							<option value="2">学科基础课</option>
-							<option value="3">公选课</option>
-							<option value="4">重修课</option>
-						</select>
-					</td>
-					
-				</tr>
-				
-				<tr>
 					<td class="tdLeft"><span style="font-size:16px;"><strong>课程学分：</strong></span></td>
 					
 					<td >
@@ -98,11 +98,21 @@ td.tdBody {
 					
 				</tr>
 				
-				<tr>
+				<tr >
 					<td class="tdLeft"><span style="font-size:16px;"><strong>课程学时：</strong></span></td>
 					
 					<td >
-					<input type="text" class="datepicker" name="CourseTime" id="CourseTime" 
+					<input type="text"  name="CourseTime" id="CourseTime" 
+						style="width:350px;height:36px;margin-left:5px;margin-top:12px;"maxlength="10" >
+					</td>
+					
+				</tr>
+				
+				<tr id="SelectTr" style="display:none;">
+					<td class="tdLeft" ><span style="font-size:16px;"><strong>课程人数：</strong></span></td>
+					
+					<td >
+					<input type="text" name="CoursePeople" id="CoursePeople" 
 						style="width:350px;height:36px;margin-left:5px;margin-top:12px;"maxlength="10" >
 					</td>
 					
@@ -118,4 +128,22 @@ td.tdBody {
 	</form>
 	
 	</div>
+	
+		<script language="JavaScript">
+	$(function () {
+		$("select[name='CourseType']").bind("change",function () {
+			var courseType = $("#CourseType option:selected").val();
+			var selectTr = document.getElementById("SelectTr");
+// 			alert(courseType);
+			if(courseType == 3){
+				selectTr.style.display = "";
+			}else{
+				if( selectTr.style.display != "none" ){
+					selectTr.style.display = "none";
+				}
+			}
+		})
+	});
+	</script>
+	
 </html>

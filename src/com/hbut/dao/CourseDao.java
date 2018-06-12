@@ -24,10 +24,29 @@ public class CourseDao {
 			// System.out.println(sql);
 			int rs = pstate.executeUpdate();
 			if (rs==1) {
-				System.out.println("事件添加成功");
+				System.out.println("课程添加成功");
 			}
 		} catch (SQLException e1) {
-			System.out.println("事件添加失败");
+			System.out.println("课程添加失败");
+			e1.printStackTrace();
+		}
+	}
+	
+	public static void insertSelectClass(Course c,int peopleNum){
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "INSERT INTO hbut_class(ClassNO,PeopleNum,Grade,Major,Ind)"
+				+" VALUES( "
+				+"'"+c.getCourseNO()+"00"+"',"+peopleNum+","
+				+0+",'"+c.getCourseName()+"',"+0+")";
+		System.out.println("CourseDao:"+sql);
+		try {
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			int rs = pstate.executeUpdate();
+			if (rs==1) {
+				System.out.println("选修班级添加成功");
+			}
+		} catch (SQLException e1) {
+			System.out.println("选修班级添加失败");
 			e1.printStackTrace();
 		}
 	}
@@ -62,6 +81,14 @@ public class CourseDao {
 			e.printStackTrace();
 		}
 		return rs;
+	}
+	
+	public static void saveCourse(Course c,int peopleNum){
+		insertCourse(c);
+		//不是公选课
+		if( c.getCourseType() == 3 ){
+			insertSelectClass(c,peopleNum);
+		}
 	}
 
 }
