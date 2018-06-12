@@ -34,13 +34,16 @@ public class StudentAction extends ActionSupport{
  */
 	public String showSchedule() {
 		String userNO = request.getParameter("UserNO").toString();
+		String classNO = "" ;
 		String strClass = "";
 		try {
+			classNO = StudentDao.getClassNO(userNO);
 			strClass = StudentDao.getClassName(userNO);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		ResultSet rs = TeachProgramDao.stuSchedule(userNO);
+		System.out.println("StuShowSchdeule:"+classNO);
+		ResultSet rs = TeachProgramDao.classSchedule(classNO);
 		int week,section;
 		try {
 			while (rs != null && rs.next() ) {	

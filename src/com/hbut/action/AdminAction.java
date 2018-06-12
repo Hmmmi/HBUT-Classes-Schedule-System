@@ -41,9 +41,11 @@ public class AdminAction extends ActionSupport{
 	}
 	
 	public String putupdateSchedule(){
-//		System.out.println("Schedule Class Num:");
 		scheduleClassNO = request.getParameter("scheduleClassNO");
 		request.setAttribute("action", "updateSchedule");
+		//查询当前班级号为scheduleClassNO的课表
+		String[][] timeTable = TeachProgramDao.queryTimeTable(scheduleClassNO);
+		request.setAttribute("timeTable", timeTable);
 		return SUCCESS;
 	}
 	
@@ -51,27 +53,29 @@ public class AdminAction extends ActionSupport{
 //		List<TeachProgramBean> tpList = new ArrayList<TeachProgramBean>();
 		String courseNO,roomNO,classNO,teacherNO;
 		int startWeek,endWeek,section,weekNum;
-		
+		System.out.println("UPDATE SCHEDULE");
 		for(int i = 0 ; i < 5 ; i++ ){
 				for(int j = 0 ; j< 7 ; j++){
-					
 					courseNO = request.getParameter("courseNO"+i+j);
-					roomNO = request.getParameter("roomNO"+i+j);
-					classNO = scheduleClassNO;
-					teacherNO = request.getParameter("teacherNO"+i+j);
-					if( ! courseNO.equals("WU")  ){
+					if( !  (courseNO == null) && !courseNO.equals("WU")  ){
+						System.out.println("courseNO:"+courseNO+i+j);
+						
+						roomNO = request.getParameter("roomNO"+i+j);
+						classNO = scheduleClassNO;
+						teacherNO = request.getParameter("teacherNO"+i+j);
 						startWeek = Integer.valueOf(  request.getParameter("startWeek"+i+j)  );
 						endWeek = Integer.valueOf(  request.getParameter("endWeek"+i+j)  );
 						section = Integer.valueOf( i  );
 						weekNum = Integer.valueOf( j );
 					
 						TeachProgramBean tp = new TeachProgramBean(courseNO,roomNO,classNO,teacherNO,startWeek,endWeek,section,weekNum);
-						System.out.println("updateSchedule:"+tp);
 						TeachProgramDao.saveTeacheProgram(tp);
 					}
 				}
-//			System.out.println(request.getParameter("courseNO"+i+"0"));
 		}
+		//查询当前班级号为scheduleClassNO的课表
+		String[][] timeTable = TeachProgramDao.queryTimeTable(scheduleClassNO);
+		request.setAttribute("timeTable", timeTable);
 		return SUCCESS;
 	}
 	

@@ -7,7 +7,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String[] section = {"第1-2节<br>8:20-9:55","第3-4节<br>10:15-11:50","第5-6节<br>14:00-15:35","第7-8节<br>15:55-17:30","第NI节<br>18:30-20:55"};
-System.out.println("0000:"+request.getAttribute("action") );
+String[][] timeTable = (String[][])request.getAttribute("timeTable");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -71,7 +71,12 @@ select.tdIn{
   					<td class="tdBody"  style="min-width:60px"><%=section[i] %> </td>
   					<%for(int j = 0 ; j < 7 ; j++){ %>
   						<td class="tdBody" > 
-						  						课程
+  						
+  						<%if(timeTable[i][j] != null){ %>
+  							<%=timeTable[i][j] %>
+  						<%}else{ %>
+  							<div>
+  												课程
 						  						<select id="courseNO<%=i %><%=j %>"  name="courseNO<%=i %><%=j %>"  class = "tdIn">
 						  							<option value="WU">请选择</option>
 						  							<%ResultSet courseRs = CourseDao.queryCourse(); %>
@@ -86,7 +91,7 @@ select.tdIn{
 						  						老师
 						  						<select id="teacherNO<%=i %><%=j %>"  name="teacherNO<%=i %><%=j %>"   class = "tdIn">
 						  							<option value="WU">请选择</option>
-						  							<%ResultSet teacherRs = TeacherDao.queryTeacher(); %>
+						  							<%ResultSet teacherRs = TeacherDao.queryTeacher(j,i); %>
 						  							<%while(teacherRs != null && teacherRs.next() ){ %>
 						  								<option value="<%=teacherRs.getString("TeacherNO")%>">
 						  									<%=teacherRs.getString("TeacherName") %>
@@ -98,7 +103,7 @@ select.tdIn{
 						  						地点
 						  						<select class = "tdIn"  id="roomNO<%=i%><%=j%>"  name = "roomNO<%=i%><%=j%>" >
 						  							<option value="WU">请选择</option>
-						  							<%ResultSet roomRs = RoomDao.queryRoom(); %>
+						  							<%ResultSet roomRs = RoomDao.queryRoom(j,i); %>
 						  							<%while(roomRs != null && roomRs.next() ){ %>
 						  								<option value="<%=roomRs.getString("RoomNO")%>">
 						  									<%=roomRs.getString("RoomNO") %>
@@ -119,11 +124,14 @@ select.tdIn{
 						  						-
 						  						<select  id="endWeek<%=i %><%=j %>"  name="endWeek<%=i %><%=j %>"   
 						  								style="width:31%;height:28px;margin-left:0px;margin-top:12px;margin-bottom:12px;">
-						  							<option value="WU">-</option>
+						  							<option value="WU" >-</option>
 						  							<%for(int k=1;k<21;k++){ %>
-						  								<option value="<%=k%>"><%=k %></option>
+						  								<option value="<%=k%>"  ><%=k %></option>
 						  							<%} %>
 						  						</select>
+  							</div>
+  							<%}//end if %>
+						  						
   						 </td>
   					<%} %>
   				</tr>

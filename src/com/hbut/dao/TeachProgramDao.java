@@ -25,11 +25,11 @@ public class TeachProgramDao {
 		return rs;
 	}
 	
-	public static ResultSet stuSchedule(String stuNO){
+	public static ResultSet classSchedule(String classNO){
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
-		String sql = "SELECT * FROM stuschedule  "
-				+"WHERE StudentNO = '"+stuNO +"' "
+		String sql = "SELECT * FROM class_schedule  "
+				+"WHERE ClassNO = '"+classNO +"' "
 				+"ORDER BY WeekNum,Section ASC";
 		try {
 			PreparedStatement pstate = conn.prepareStatement(sql);
@@ -62,6 +62,26 @@ public class TeachProgramDao {
 			System.out.println("教学计划添加失败");
 			e1.printStackTrace();
 		}
+	}
+	
+	public static String[][] queryTimeTable(String classNO){
+		String[][] timeTable = new String[5][7];
+		ResultSet rs = TeachProgramDao.classSchedule(classNO);
+		int week,section;
+		try {
+			while (rs != null && rs.next() ) {	
+				week = rs.getInt("WeekNum");
+				section = rs.getInt("Section");
+				String value = rs.getString("CourseName")+"<br>"
+									+rs.getString("TeacherName")+"<br>"
+									+rs.getString("RoomNO")+"<br>"
+									+rs.getString("StartWeek")+"-"+rs.getString("endWeek")+"周<br>";
+				timeTable[section][week] = value;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return timeTable;
 	}
 
 }

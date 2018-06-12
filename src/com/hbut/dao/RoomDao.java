@@ -30,10 +30,12 @@ public class RoomDao {
 		return rs;
 	}
 	
-	public static ResultSet queryRoom() {
+	public static ResultSet queryRoom(int weekNum,int section) {
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
-		String sql = "select RoomNO,SeatNum from hbut_room ";
+		String sql = "select RoomNO,SeatNum from hbut_room WHERE RoomNO NOT IN ( "
+				+"SELECT RoomNO FROM hbut_teachprogram WHERE Section = "
+				+section+" AND WeekNum = "+weekNum +" )";
 		try{
 			PreparedStatement pstate = conn.prepareStatement(sql);
 			rs = pstate.executeQuery();
