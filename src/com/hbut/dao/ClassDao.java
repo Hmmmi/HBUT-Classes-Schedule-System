@@ -21,5 +21,18 @@ public class ClassDao {
 		}
 		return rs;
 	}
+	
+	public static ResultSet querySelectClass() {
+		ResultSet rs = null;
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "select * from hbut_class WHERE Ind = 0 ";
+		try {
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			rs = pstate.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
 }

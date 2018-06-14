@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%@ page import="java.sql.*"%>
+<%@ page import="com.hbut.dao.*"%>
 
 <%
 String path = request.getContextPath();
@@ -48,7 +49,35 @@ td.tdBody {
 		
 		<h3>选课信息</h3>
 		  
- 		 
+ 		 	<div style="margin-top: 20px;margin-left:0px;margin-right: 22px;min-width:200px">
+ 		 <table id="previewTab" border = "1" class="table table-striped table-bordered"  width=25%  >
+  			<tr>
+  				<td class="tdHead" ></td>
+  				<td class="tdHead" ><strong>名称</strong></td>
+  				<td class="tdHead" ><strong>人数</strong></td>
+  				<td class="tdHead" ><strong>老师</strong></td>
+  			</tr>
+  			<% ResultSet rs = ClassDao.querySelectClass(); 
+  				while(rs != null && rs.next() ){ %>
+  				<tr>
+  					<td class="tdBody" >
+  						<input name = "data" id="companyID" type="checkbox" style="margin-left:0px;margin-bottom: 10px;" value="<%=rs.getString("ClassNO")%>"/>
+  					</td>
+  					<td class="tdBody" > <%= rs.getString("Major") %> </td>
+  					<td class="tdBody" > <%= rs.getString("PeopleNum") %> </td>
+  					<td class="tdBody" > <%= TeacherDao.queryTeacherName(rs.getString("Grade"))  %> </td>
+  				</tr> 
+  			<%} %>
+  		</table>
+	
+<!-- 	<div align="center"  style="margin-left:auto;margin-right:auto;width:200px;margin-top: 20px;"> -->
+<!-- 		<input type="button" id="submit" value="汇总" onclick="location.href='/ZsGljSystem/actionEvent/eventCollection.action'" -->
+<!-- 			style=" width:62px;height:30px;margin-left: 0px;" /> -->
+		<!--  input type="button" value="返回" id="return"
+			   style="font-size:16px;border-radius:20px;width:80px;height:40px;" /> -->
+<!-- 	</div> -->
+	</div>
+	<div class="clear"></div>
 	
 	</div>
 </html>

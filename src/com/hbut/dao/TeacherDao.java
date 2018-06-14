@@ -24,4 +24,21 @@ public class TeacherDao {
 		return rs;
 	}
 	
+	public static String queryTeacherName(String teacherNO)throws SQLException {
+		ResultSet rs = null;
+		String name = "";
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "select * from hbut_teacher WHERE TeacherNO ='"+teacherNO+"'";
+		try{
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			rs = pstate.executeQuery();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		while(rs != null && rs.next() ){
+			name = rs.getString("TeacherName");
+		}
+		return name;
+	}
+	
 }

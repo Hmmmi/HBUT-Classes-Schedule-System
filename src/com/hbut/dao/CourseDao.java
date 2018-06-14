@@ -32,12 +32,12 @@ public class CourseDao {
 		}
 	}
 	
-	public static void insertSelectClass(Course c,int peopleNum){
+	public static void insertSelectClass(Course c,int peopleNum,String userNO){
 		Connection conn = ConnectSQL.getConnection();
 		String sql = "INSERT INTO hbut_class(ClassNO,PeopleNum,Grade,Major,Ind)"
 				+" VALUES( "
-				+"'"+c.getCourseNO()+"00"+"',"+peopleNum+","
-				+0+",'"+c.getCourseName()+"',"+0+")";
+				+"'"+c.getCourseNO()+"00',"+peopleNum+","
+				+userNO+",'"+c.getCourseName()+"',"+0+")";
 		System.out.println("CourseDao:"+sql);
 		try {
 			PreparedStatement pstate = conn.prepareStatement(sql);
@@ -83,11 +83,11 @@ public class CourseDao {
 		return rs;
 	}
 	
-	public static void saveCourse(Course c,int peopleNum){
+	public static void saveCourse(Course c,int peopleNum,String userNO){
 		insertCourse(c);
-		//不是公选课
+		//是公选课
 		if( c.getCourseType() == 3 ){
-			insertSelectClass(c,peopleNum);
+			insertSelectClass(c,peopleNum,userNO);
 		}
 	}
 

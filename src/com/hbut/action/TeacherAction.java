@@ -18,6 +18,7 @@ import com.hbut.dao.TeachProgramDao;
 public class TeacherAction extends ActionSupport{
 	
 	private static final long serialVersionUID = -3432242185210308329L;
+	private static String userNO;
 	private HttpServletRequest request;
 	@SuppressWarnings("unused")
 	private HttpServletResponse response;
@@ -34,7 +35,7 @@ public class TeacherAction extends ActionSupport{
  * @return
  */
 	public String showSchedule() {
-		String userNO = request.getParameter("UserNO").toString();
+		userNO = request.getParameter("UserNO").toString();
 		ResultSet rs = TeachProgramDao.teacherSchedule(userNO);
 		int week,section;
 		try {
@@ -64,6 +65,8 @@ public class TeacherAction extends ActionSupport{
 	
 	public String addCourse(){
 		String userType = session.get("UserType").toString();
+//		String userNO = request.getParameter("UserNO").toString();
+		System.out.println("addCourse UserNO:"+userNO);
 		request.setAttribute("userType",userType);
 		String courseNo = request.getParameter("CourseNO");
 		String courseName = request.getParameter("CourseName");
@@ -76,7 +79,7 @@ public class TeacherAction extends ActionSupport{
 			peopleNum = Integer.valueOf( request.getParameter("CoursePeople") );
 		}
 		Course c = new Course(courseNo,courseName,courseType,courseCredit,courseTime);
-		CourseDao.saveCourse(c,peopleNum);
+		CourseDao.saveCourse(c,peopleNum,userNO);
 //		System.out.println(courseNo+" "+courseName+" "+courseType+" "+courseCredit+" "+courseTime);
 		return "RESULT";
 	}
