@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%@ page import="java.sql.*"%>
+<%@ page import="com.hbut.dao.*"%>
 
 <%
 String path = request.getContextPath();
@@ -68,15 +69,15 @@ td.tdBody {
 					
 				</tr>
 				
-				<tr>
-					<td class="tdLeft"><span style="font-size:16px;"><strong>课程编号：</strong></span></td>
+<!-- 				<tr> -->
+<!-- 					<td class="tdLeft"><span style="font-size:16px;"><strong>课程编号：</strong></span></td> -->
 					
-					<td >
-					<input type="text" class="datepicker" name="CourseNO" id="CourseNO" 
-						style="width:350px;height:36px;margin-left:5px;margin-top:12px;"maxlength="10" >
-					</td>
+<!-- 					<td > -->
+<!-- 					<input type="text" name="CourseNO" id="CourseNO"  -->
+<!-- 						style="width:350px;height:36px;margin-left:5px;margin-top:12px;"maxlength="10" > -->
+<!-- 					</td> -->
 					
-				</tr>
+<!-- 				</tr> -->
 				
 				<tr>
 					<td class="tdLeft"><span style="font-size:16px;"><strong>课程名称：</strong></span></td>
@@ -108,12 +109,83 @@ td.tdBody {
 					
 				</tr>
 				
-				<tr id="SelectTr" style="display:none;">
+				<tr id="people" style="display:none;">
 					<td class="tdLeft" ><span style="font-size:16px;"><strong>课程人数：</strong></span></td>
 					
 					<td >
 					<input type="text" name="CoursePeople" id="CoursePeople" 
 						style="width:350px;height:36px;margin-left:5px;margin-top:12px;"maxlength="10" >
+					</td>
+					
+				</tr>
+				
+				<tr id="seweek" style="display:none;">
+					<td class="tdLeft" ><span style="font-size:16px;"><strong>时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;间：</strong></span></td>
+					
+					<td >
+							<select  id="startWeek"  name="startWeek"   
+						  								 style="width:17.2%;height:36px;margin-left:5px;margin-top:12px;margin-bottom:12px;">
+						  			<%for(int k=1;k<21;k++){ %>
+						  		<option value="<%=k%>"><%=k %></option>
+						  			<%} %>
+						  	</select>
+						  	-
+						  	<select  id="endWeek"  name="endWeek"   
+						  								style="width:17.2%;height:36px;margin-left:0px;margin-top:12px;margin-bottom:12px;">
+						  					<%for(int k=1;k<21;k++){ %>
+						  			<option value="<%=k%>"  ><%=k %></option>
+						  					<%} %>
+						  	</select>
+					</td>
+					
+				</tr>
+				
+				<tr id="room" style="display:none;">
+					<td class="tdLeft" ><span style="font-size:16px;"><strong>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点：</strong></span></td>
+					
+					<td >
+							<select  id="roomNO"  name="roomNO"   
+						  								 style="width:36%;height:36px;margin-left:5px;margin-top:12px;margin-bottom:12px;">
+						  			<%ResultSet roomRs = RoomDao.queryAllRoom(); %>
+						  							<%while(roomRs != null && roomRs.next() ){ %>
+						  								<option value="<%=roomRs.getString("RoomNO")%>">
+						  									<%=roomRs.getString("RoomNO") %>
+						  								</option>
+						  							<%} %>
+						  	</select>
+						  
+					</td>
+					
+				</tr>
+				
+				<tr id="section" style="display:none;">
+					<td class="tdLeft" ><span style="font-size:16px;"><strong>节&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;次：</strong></span></td>
+					
+					<td >
+						<select style="width:350px;height:36px;margin-left:5px;margin-top:12px;margin-bottom:12px;" id="CourseSection" name="CourseSection">
+							<option value="0" >1-2节</option>
+							<option value="1" >3-4节</option>
+							<option value="2" >5-6节</option>
+							<option value="3" >7-8节</option>
+							<option value="4" >NI节</option>
+						</select>
+					</td>
+					
+				</tr>
+				
+				<tr id="week" style="display:none;">
+					<td class="tdLeft" ><span style="font-size:16px;"><strong>星&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</strong></span></td>
+					
+					<td >
+						<select style="width:350px;height:36px;margin-left:5px;margin-top:12px;margin-bottom:12px;" id="CourseWeek" name="CourseWeek">
+							<option value="0">星期一</option>
+							<option value="1">星期二</option>
+							<option value="2">星期三</option>
+							<option value="3">星期四</option>
+							<option value="4">星期五</option>
+							<option value="5">星期六</option>
+							<option value="6">星期天</option>
+						</select>
 					</td>
 					
 				</tr>
@@ -133,13 +205,32 @@ td.tdBody {
 	$(function () {
 		$("select[name='CourseType']").bind("change",function () {
 			var courseType = $("#CourseType option:selected").val();
-			var selectTr = document.getElementById("SelectTr");
-// 			alert(courseType);
+			var people = document.getElementById("people");
+			var room = document.getElementById("room");
+			var seweek = document.getElementById("seweek");
+			var section = document.getElementById("section");
+			var week = document.getElementById("week");
 			if(courseType == 3){
-				selectTr.style.display = "";
+				people.style.display = "";
+				room.style.display = "";
+				seweek.style.display = "";
+				section.style.display = "";
+				week.style.display = "";
 			}else{
-				if( selectTr.style.display != "none" ){
-					selectTr.style.display = "none";
+				if( people.style.display != "none" ){
+					people.style.display = "none";
+				}
+				if( room.style.display != "none" ){
+					room.style.display = "none";
+				}
+				if( seweek.style.display != "none" ){
+					seweek.style.display = "none";
+				}
+				if( section.style.display != "none" ){
+					section.style.display = "none";
+				}
+				if( week.style.display != "none" ){
+					week.style.display = "none";
 				}
 			}
 		})

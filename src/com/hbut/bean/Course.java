@@ -1,17 +1,19 @@
 package com.hbut.bean;
 
+import java.util.UUID;
+
 public class Course {
 	
-	private String courseNO;
+	private UUID courseNO;
 	private String courseName;
 	private int courseType;
 	private float credie;
 	private int courseTime;
 	
-	public String getCourseNO() {
+	public UUID getCourseNO() {
 		return courseNO;
 	}
-	public void setCourseNO(String courseNO) {
+	public void setCourseNO(UUID courseNO) {
 		this.courseNO = courseNO;
 	}
 	public String getCourseName() {
@@ -39,8 +41,8 @@ public class Course {
 		this.courseTime = courseTime;
 	}
 	
-	public Course(String no,String name,int type,float credit,int time) {
-		this.courseNO = no;
+	public Course(String name,int type,float credit,int time) {
+		this.courseNO = UUID.randomUUID();
 		this.courseName = name;
 		this.courseType = type;
 		this.credie = credit;

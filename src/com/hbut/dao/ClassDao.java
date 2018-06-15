@@ -22,17 +22,22 @@ public class ClassDao {
 		return rs;
 	}
 	
-	public static ResultSet querySelectClass() {
+	public static String getClassName(String classNO) {
+		String classString = "";
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
-		String sql = "select * from hbut_class WHERE Ind = 0 ";
+		String sql = "SELECT * FROM hbut_class "
+				+"WHERE ClassNO =  '"+classNO +"' ";
 		try {
 			PreparedStatement pstate = conn.prepareStatement(sql);
 			rs = pstate.executeQuery();
+			while(rs != null && rs.next() ){
+				classString = rs.getString("Grade")+rs.getString("Major")+"-"+rs.getInt("Ind");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return rs;
+		return classString;
 	}
 
 }

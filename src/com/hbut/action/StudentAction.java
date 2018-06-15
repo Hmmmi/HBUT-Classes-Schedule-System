@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.hbut.dao.ClassDao;
 import com.hbut.dao.StudentDao;
 import com.hbut.dao.TeachProgramDao;
 
@@ -36,13 +37,8 @@ public class StudentAction extends ActionSupport{
 		String userNO = request.getParameter("UserNO").toString();
 		String classNO = "" ;
 		String strClass = "";
-		try {
-			classNO = StudentDao.getClassNO(userNO);
-			strClass = StudentDao.getClassName(userNO);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		System.out.println("StuShowSchdeule:"+classNO);
+		classNO = StudentDao.getClassNO(userNO);
+		strClass = ClassDao.getClassName(classNO);
 		ResultSet rs = TeachProgramDao.classSchedule(classNO);
 		int week,section;
 		try {

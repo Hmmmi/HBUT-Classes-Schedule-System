@@ -12,7 +12,9 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.hbut.bean.Course;
+import com.hbut.bean.ElectiveClass;
 import com.hbut.dao.CourseDao;
+import com.hbut.dao.ElectiveClassDao;
 import com.hbut.dao.TeachProgramDao;
 
 public class TeacherAction extends ActionSupport{
@@ -68,18 +70,25 @@ public class TeacherAction extends ActionSupport{
 //		String userNO = request.getParameter("UserNO").toString();
 		System.out.println("addCourse UserNO:"+userNO);
 		request.setAttribute("userType",userType);
-		String courseNo = request.getParameter("CourseNO");
 		String courseName = request.getParameter("CourseName");
 		int courseType = Integer.valueOf( request.getParameter("CourseType") );
 		float courseCredit = Float.valueOf( request.getParameter("Credit") );
 		int courseTime = Integer.valueOf( request.getParameter("CourseTime") );
-		int peopleNum = 0;
+		
+		Course c = new Course(courseName,courseType,courseCredit,courseTime);
+		CourseDao.insertCourse(c);
 		//如果是公选课
 		if(courseType == 3){
-			peopleNum = Integer.valueOf( request.getParameter("CoursePeople") );
+			String roomNO = request.getParameter("roomNO");
+			int peopleNum = Integer.valueOf( request.getParameter("CoursePeople") );
+			int startWeek = Integer.valueOf( request.getParameter("startWeek") );
+			int endWeek = Integer.valueOf( request.getParameter("endWeek") );
+			int section = Integer.valueOf( request.getParameter("CourseSection") );
+			int weekNum = Integer.valueOf( request.getParameter("CourseWeek") );
+			ElectiveClass ec = new ElectiveClass(c.getCourseNO(),userNO,roomNO,peopleNum,startWeek,endWeek,section,weekNum);
+			System.out.println(ec.toString());
+			ElectiveClassDao.saveElectiveClass(ec);
 		}
-		Course c = new Course(courseNo,courseName,courseType,courseCredit,courseTime);
-		CourseDao.saveCourse(c,peopleNum,userNO);
 //		System.out.println(courseNo+" "+courseName+" "+courseType+" "+courseCredit+" "+courseTime);
 		return "RESULT";
 	}

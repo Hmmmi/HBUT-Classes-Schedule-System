@@ -9,40 +9,21 @@ import com.hbut.util.ConnectSQL;
 
 public class StudentDao {
 	
-	public static String getClassName(String stuNO) throws SQLException{
-		String classString = "";
-		ResultSet rs = null;
-		Connection conn = ConnectSQL.getConnection();
-		String sql = "SELECT * FROM hbut_class,hbut_student "
-				+"WHERE hbut_class.ClassNO = hbut_student.ClassNO "
-				+"AND StudentNO = '"+stuNO +"' ";
-		try {
-			PreparedStatement pstate = conn.prepareStatement(sql);
-			rs = pstate.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		while(rs != null && rs.next() ){
-			classString = rs.getString("Grade")+rs.getString("Major")+"-"+rs.getInt("Ind");
-		}
-		return classString;
-	}
-	
-	public static String getClassNO(String stuNO) throws SQLException{
+	public static String getClassNO(String stuNO){
 		String classNO = "";
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
-		String sql = "SELECT * FROM hbut_class,hbut_student "
+		String sql = "SELECT hbut_student.ClassNO AS ClassNO FROM hbut_class,hbut_student "
 				+"WHERE hbut_class.ClassNO = hbut_student.ClassNO "
 				+"AND StudentNO = '"+stuNO +"' ";
 		try {
 			PreparedStatement pstate = conn.prepareStatement(sql);
 			rs = pstate.executeQuery();
+			while(rs != null && rs.next() ){
+				classNO = rs.getString("ClassNO");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		while(rs != null && rs.next() ){
-			classNO = rs.getString("hbut_class.ClassNO");
 		}
 		return classNO;
 	}

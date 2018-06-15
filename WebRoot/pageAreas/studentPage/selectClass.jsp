@@ -7,7 +7,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String userNO = request.getParameter("UserNO");
-String[][] timeTable = (String[][])request.getAttribute("timeTable");
+String[] section = {"第1-2节<br>8:20-9:55","第3-4节<br>10:15-11:50","第5-6节<br>14:00-15:35","第7-8节<br>15:55-17:30","第NI节<br>18:30-20:55"};
+String[] week = {"星期一","星期二","星期三","星期四","星期五","星期六","星期天"};
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -54,18 +55,26 @@ td.tdBody {
   			<tr>
   				<td class="tdHead" ></td>
   				<td class="tdHead" ><strong>名称</strong></td>
-  				<td class="tdHead" ><strong>人数</strong></td>
   				<td class="tdHead" ><strong>老师</strong></td>
+  				<td class="tdHead" ><strong>人数</strong></td>
+  				<td class="tdHead" ><strong>地点</strong></td>
+  				<td class="tdHead" ><strong>时间</strong></td>
+  				<td class="tdHead" ><strong>节次</strong></td>
+  				<td class="tdHead" ><strong>星期</strong></td>
   			</tr>
-  			<% ResultSet rs = ClassDao.querySelectClass(); 
+  			<% ResultSet rs = ElectiveClassDao.queryEelectiveClass(); 
   				while(rs != null && rs.next() ){ %>
   				<tr>
   					<td class="tdBody" >
-  						<input name = "data" id="companyID" type="checkbox" style="margin-left:0px;margin-bottom: 10px;" value="<%=rs.getString("ClassNO")%>"/>
+  						<input name = "data" id="data" type="radio" style="margin-left:0px;margin-bottom: 10px;" value="<%=rs.getString("SelectClassNO")%>"/>
   					</td>
-  					<td class="tdBody" > <%= rs.getString("Major") %> </td>
+  					<td class="tdBody" > <%= rs.getString("CourseName") %> </td>
+  					<td class="tdBody" > <%= rs.getString("TeacherName") %> </td>
   					<td class="tdBody" > <%= rs.getString("PeopleNum") %> </td>
-  					<td class="tdBody" > <%= TeacherDao.queryTeacherName(rs.getString("Grade"))  %> </td>
+  					<td class="tdBody" > <%= rs.getString("RoomNO") %> </td>
+  					<td class="tdBody" > <%= rs.getString("StartWeek") %>-<%= rs.getString("endWeek") %> 周</td>
+  					<td class="tdBody" > <%= section[Integer.valueOf(rs.getString("Section"))] %> </td>
+  					<td class="tdBody" > <%= week[Integer.valueOf(rs.getString("WeekNum"))] %> </td>
   				</tr> 
   			<%} %>
   		</table>
