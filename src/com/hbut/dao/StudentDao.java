@@ -27,5 +27,37 @@ public class StudentDao {
 		}
 		return classNO;
 	}
+	
+	public static void saveSelectClass(String selClassNO,String stuNO){
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "UPDATE hbut_student SET SelectClassNO = '"
+						+ selClassNO+"'  WHERE StudentNO = '"+stuNO+"'";
+		try {
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			int rs = pstate.executeUpdate();
+			if (rs==1) {
+				System.out.println("选修课添加成功");
+			}
+		} catch (SQLException e1) {
+			System.out.println("选修课添加失败");
+			e1.printStackTrace();
+		}
+	}
+	
+	public static void delSelectClass(String stuNO){
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "UPDATE hbut_student SET SelectClassNO = NULL"
+						+ " WHERE StudentNO = '"+stuNO+"'";
+		try {
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			int rs = pstate.executeUpdate();
+			if (rs==1) {
+				System.out.println("选修课删除成功");
+			}
+		} catch (SQLException e1) {
+			System.out.println("选修课删除失败");
+			e1.printStackTrace();
+		}
+	}
 
 }

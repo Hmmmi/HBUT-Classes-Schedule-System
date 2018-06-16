@@ -10,6 +10,10 @@ import com.hbut.util.ConnectSQL;
 
 public class ElectiveClassDao {
 	
+	/**
+	 * 向选修课表插入一条记录（选修课ec）
+	 * @param ec
+	 */
 	public static void saveElectiveClass(ElectiveClass ec){
 		Connection conn = ConnectSQL.getConnection();
 		String sql = "INSERT INTO hbut_electiveclass ("
@@ -33,10 +37,57 @@ public class ElectiveClassDao {
 		}
 	}
 	
-	public static ResultSet queryEelectiveClass() {
+	/**
+	 * 查询除某学生已选课程外的其他选修课
+	 * @param stuNO
+	 * @return
+	 */
+	public static ResultSet queryEelectiveClass(String stuNO) {
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
-		String sql = "select * from elective_class ";
+		String sql = "SELECT * FROM elective_class WHERE SelectClassNO NOT IN( "
+					+ "SELECT SelectClassNO FROM hbut_student WHERE StudentNO = '"
+					+ stuNO+"')";
+//		System.out.println("queryEelectiveClass:"+sql);
+		try {
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			rs = pstate.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	/**
+	 * 查询所有选修课
+	 * @return
+	 */
+	public static ResultSet allEleClass() {
+		ResultSet rs = null;
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "SELECT * FROM elective_class  ";
+//		System.out.println("allEleClass:"+sql);
+		try {
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			rs = pstate.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	/**
+	 * 查询某学生的已选课程
+	 * @param stuNO
+	 * @return
+	 */
+	public static ResultSet selectedClass(String stuNO) {
+		ResultSet rs = null;
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "SELECT * FROM elective_class WHERE SelectClassNO IN("
+						+ "SELECT SelectClassNO FROM hbut_student WHERE StudentNO = '"
+						+ stuNO +"')";
+//		System.out.println("selectedClass:"+sql);
 		try {
 			PreparedStatement pstate = conn.prepareStatement(sql);
 			rs = pstate.executeQuery();

@@ -23,6 +23,14 @@
 			<result name="success">/pageAreas/studentPage/selectClass.jsp</result>
 		</action>
 		
+		<action name="submitSelectClass" class="com.hbut.action.StudentAction" method="submitSelectClass">
+			<result name="success">/pageAreas/studentPage/selectClass.jsp</result>
+		</action>
+		
+		<action name="delSelectClass" class="com.hbut.action.StudentAction" method="delSelectClass">
+			<result name="success">/pageAreas/studentPage/selectClass.jsp</result>
+		</action>
+		
 	</package>
 
 </struts>

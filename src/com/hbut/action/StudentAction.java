@@ -24,6 +24,7 @@ public class StudentAction extends ActionSupport{
 	@SuppressWarnings({ "unused", "rawtypes" })
 	private Map session = ActionContext.getContext().getSession();
 	private String[][] timeTable = new String[5][7];
+	private static String userNO;
 	
 	public StudentAction(){
 		request = ServletActionContext.getRequest();
@@ -34,7 +35,7 @@ public class StudentAction extends ActionSupport{
  * @return
  */
 	public String showSchedule() {
-		String userNO = request.getParameter("UserNO").toString();
+		userNO = request.getParameter("UserNO").toString();
 		String classNO = "" ;
 		String strClass = "";
 		classNO = StudentDao.getClassNO(userNO);
@@ -64,6 +65,20 @@ public class StudentAction extends ActionSupport{
 	}
 	
 	public String selectClass() {
+		request.setAttribute("stuNO", userNO);
+		return SUCCESS;
+	}
+	
+	public String submitSelectClass(){
+		request.setAttribute("stuNO", userNO);
+		String selClassNO = request.getParameter("selectClassNO");
+		StudentDao.saveSelectClass(selClassNO, userNO);
+		return SUCCESS;
+	}
+	
+	public String delSelectClass(){
+		request.setAttribute("stuNO", userNO);
+		StudentDao.delSelectClass(userNO);
 		return SUCCESS;
 	}
 	
