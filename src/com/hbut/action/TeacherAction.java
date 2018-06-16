@@ -26,7 +26,7 @@ public class TeacherAction extends ActionSupport{
 	private HttpServletResponse response;
 	@SuppressWarnings("rawtypes")
 	private Map session = ActionContext.getContext().getSession();
-	private String[][] timeTable = new String[5][7];
+	private static String[][] timeTable = new String[5][7];
 	
 	public TeacherAction(){
 		request = ServletActionContext.getRequest();
@@ -90,6 +90,7 @@ public class TeacherAction extends ActionSupport{
 			ElectiveClassDao.saveElectiveClass(ec);
 		}
 //		System.out.println(courseNo+" "+courseName+" "+courseType+" "+courseCredit+" "+courseTime);
+		request.setAttribute("timeTable", timeTable);
 		return "RESULT";
 	}
 	

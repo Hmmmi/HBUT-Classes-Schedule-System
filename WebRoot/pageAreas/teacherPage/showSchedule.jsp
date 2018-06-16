@@ -5,7 +5,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String userNO = request.getParameter("UserNO");
+// String userNO = request.getParameter("UserNO");
 String[][] timeTable = (String[][])request.getAttribute("timeTable");
 String[] section = {"第1-2节<br>8:20-9:55","第3-4节<br>10:15-11:50","第5-6节<br>14:00-15:35","第7-8节<br>15:55-17:30","第NI节<br>18:30-20:55"};
 // String value = "数据库原理与应用<br>16计算机科学与技术<br>3-103<br>1-12周<br>";

@@ -24,7 +24,7 @@
 		</action>
 		
 		<action name="addCourse" class="com.hbut.action.TeacherAction" method="addCourse">
-			<result name="RESULT">/pageAreas/teacherPage/addCourse.jsp</result>
+			<result name="RESULT">/pageAreas/teacherPage/showSchedule.jsp</result>
 		</action>
 	</package>
 
