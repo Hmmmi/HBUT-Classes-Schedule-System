@@ -59,6 +59,26 @@ public class ElectiveClassDao {
 	}
 	
 	/**
+	 * 查询某教师的选修课记录
+	 * @param teaNO
+	 * @return
+	 */
+	public static ResultSet teacherElectiveClass(String teaNO){
+		ResultSet rs = null;
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "SELECT * FROM teacher_electiveclass WHERE TeacherNO = '"
+					+ teaNO+"'";
+//		System.out.println("teacherElectiveClass:"+sql);
+		try {
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			rs = pstate.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	/**
 	 * 查询所有选修课
 	 * @return
 	 */

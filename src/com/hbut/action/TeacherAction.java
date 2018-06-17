@@ -37,8 +37,10 @@ public class TeacherAction extends ActionSupport{
  * @return
  */
 	public String showSchedule() {
+		iniTable();
 		userNO = request.getParameter("UserNO").toString();
 		ResultSet rs = TeachProgramDao.teacherSchedule(userNO);
+		ResultSet electiveClassRs = ElectiveClassDao.teacherElectiveClass(userNO);
 		int week,section;
 		try {
 			while (rs != null && rs.next() ) {	
@@ -53,10 +55,32 @@ public class TeacherAction extends ActionSupport{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		/********************选修课记录***********************/
+		int eleWeek,eleSection;
+		try {
+			while (electiveClassRs != null && electiveClassRs.next() ) {	
+				eleWeek = electiveClassRs.getInt("WeekNum");
+				eleSection = electiveClassRs.getInt("Section");
+				String value = electiveClassRs.getString("CourseName")+"<br>"
+									+electiveClassRs.getString("RoomNO")+"<br>"
+									+electiveClassRs.getString("StartWeek")+"-"+electiveClassRs.getString("endWeek")+"周<br>";
+				timeTable[eleWeek][eleSection] = value;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		request.setAttribute("timeTable", timeTable);
 		return SUCCESS;
 	}
 	
+	private void iniTable() {
+		for(int i = 0 ; i < 5 ; i ++ ){
+			for(int j = 0 ; j < 7 ; j++){
+				timeTable[i][j] = "";
+			}
+		}
+	}
+
 	public String searchEmptyRoom() {
 		return SUCCESS;
 	}
