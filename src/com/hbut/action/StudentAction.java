@@ -30,10 +30,10 @@ public class StudentAction extends ActionSupport{
 		request = ServletActionContext.getRequest();
 		}
 	
-/**
- * 课表查看
- * @return
- */
+	/**
+	 * 课表查看
+	 * @return
+	 */
 	public String showSchedule() {
 		userNO = request.getParameter("UserNO").toString();
 		String classNO = "" ;
@@ -60,15 +60,27 @@ public class StudentAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 教室查看
+	 * @return
+	 */
 	public String searchEmptyRoom() {
 		return SUCCESS;
 	}
 	
+	/**
+	 * 选课界面
+	 * @return
+	 */
 	public String selectClass() {
 		request.setAttribute("stuNO", userNO);
 		return SUCCESS;
 	}
 	
+	/**
+	 * 提交选课信息
+	 * @return
+	 */
 	public String submitSelectClass(){
 		request.setAttribute("stuNO", userNO);
 		String selClassNO = request.getParameter("selectClassNO");
@@ -76,6 +88,10 @@ public class StudentAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 删除选课信息
+	 * @return
+	 */
 	public String delSelectClass(){
 		request.setAttribute("stuNO", userNO);
 		StudentDao.delSelectClass(userNO);

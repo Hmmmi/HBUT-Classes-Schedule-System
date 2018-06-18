@@ -32,10 +32,10 @@ public class TeacherAction extends ActionSupport{
 		request = ServletActionContext.getRequest();
 		}
 	
-/**
- * 课表查看
- * @return
- */
+	/**
+	 * 课表查看
+	 * @return
+	 */
 	public String showSchedule() {
 		iniTable();
 		userNO = request.getParameter("UserNO").toString();
@@ -73,6 +73,9 @@ public class TeacherAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 清空课表数据
+	 */
 	private void iniTable() {
 		for(int i = 0 ; i < 5 ; i ++ ){
 			for(int j = 0 ; j < 7 ; j++){
@@ -81,14 +84,26 @@ public class TeacherAction extends ActionSupport{
 		}
 	}
 
+	/**
+	 * 教室查看界面
+	 * @return
+	 */
 	public String searchEmptyRoom() {
 		return SUCCESS;
 	}
 	
+	/**
+	 * 添加课程界面
+	 * @return
+	 */
 	public String addCoursePage() {
 		return SUCCESS;
 	}
 	
+	/**
+	 * 提交所填课程信息
+	 * @return
+	 */
 	public String addCourse(){
 		String userType = session.get("UserType").toString();
 //		String userNO = request.getParameter("UserNO").toString();

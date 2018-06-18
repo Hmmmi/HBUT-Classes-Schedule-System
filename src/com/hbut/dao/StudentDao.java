@@ -9,6 +9,11 @@ import com.hbut.util.ConnectSQL;
 
 public class StudentDao {
 	
+	/**
+	 * 根据学生号获取学生所在班级
+	 * @param stuNO
+	 * @return
+	 */
 	public static String getClassNO(String stuNO){
 		String classNO = "";
 		ResultSet rs = null;
@@ -28,6 +33,11 @@ public class StudentDao {
 		return classNO;
 	}
 	
+	/**
+	 * 保存学生选课信息
+	 * @param selClassNO
+	 * @param stuNO
+	 */
 	public static void saveSelectClass(String selClassNO,String stuNO){
 		Connection conn = ConnectSQL.getConnection();
 		String sql = "UPDATE hbut_student SET SelectClassNO = '"
@@ -44,6 +54,10 @@ public class StudentDao {
 		}
 	}
 	
+	/**
+	 * 删除学生选课信息
+	 * @param stuNO
+	 */
 	public static void delSelectClass(String stuNO){
 		Connection conn = ConnectSQL.getConnection();
 		String sql = "UPDATE hbut_student SET SelectClassNO = NULL"

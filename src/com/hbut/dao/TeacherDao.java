@@ -9,6 +9,12 @@ import com.hbut.util.ConnectSQL;
 
 public class TeacherDao {
 	
+	/**
+	 * 返回某天某节次空闲教师
+	 * @param weekNum
+	 * @param section
+	 * @return
+	 */
 	public static ResultSet queryTeacher(int weekNum,int section) {
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
@@ -24,6 +30,12 @@ public class TeacherDao {
 		return rs;
 	}
 	
+	/**
+	 * 根据教师职工号返回教师姓名
+	 * @param teacherNO
+	 * @return
+	 * @throws SQLException
+	 */
 	public static String queryTeacherName(String teacherNO)throws SQLException {
 		ResultSet rs = null;
 		String name = "";

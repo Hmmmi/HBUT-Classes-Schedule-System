@@ -10,6 +10,11 @@ import com.hbut.util.ConnectSQL;
 
 public class TeachProgramDao {
 	
+	/**
+	 * 查询教师教学信息
+	 * @param teacherNO
+	 * @return
+	 */
 	public static ResultSet teacherSchedule(String teacherNO){
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
@@ -25,6 +30,11 @@ public class TeachProgramDao {
 		return rs;
 	}
 	
+	/**
+	 * 返回某班教学信息
+	 * @param classNO
+	 * @return
+	 */
 	public static ResultSet classSchedule(String classNO){
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
@@ -40,6 +50,10 @@ public class TeachProgramDao {
 		return rs;
 	}
 	
+	/**
+	 * 提交管理员填写的教学信息
+	 * @param tp
+	 */
 	public static void saveTeacheProgram(TeachProgramBean tp){
 		Connection conn = ConnectSQL.getConnection();
 		String sql = "INSERT INTO hbut_teachprogram ("
@@ -64,6 +78,11 @@ public class TeachProgramDao {
 		}
 	}
 	
+	/**
+	 * 根据教学信息得到班级课表
+	 * @param classNO
+	 * @return
+	 */
 	public static String[][] queryTimeTable(String classNO){
 		String[][] timeTable = new String[5][7];
 		ResultSet rs = TeachProgramDao.classSchedule(classNO);

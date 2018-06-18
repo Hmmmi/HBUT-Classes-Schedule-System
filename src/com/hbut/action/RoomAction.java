@@ -23,23 +23,15 @@ public class RoomAction extends ActionSupport{
 		request = ServletActionContext.getRequest();
 		}
 	
-/**
- * 课表查看
- * @return
- */
+	/**
+	 * 课表查看
+	 * @return
+	 */
 	public String showResult() {
 		int queryWeekNum = Integer.valueOf(request.getParameter("queryWeekNum").toString());
 		int queryPeopleNum = Integer.valueOf(request.getParameter("queryPeopleNum").toString());
 		int queryDayNum = Integer.valueOf(request.getParameter("queryDayNum").toString());
 		int querySectionNum = Integer.valueOf(request.getParameter("querySectionNum").toString());
-//		ResultSet rs = null;
-//		try {
-//			rs = RoomDao.searchRoom(queryWeekNum, queryDayNum, querySectionNum, queryPeopleNum);
-//			while (rs != null && rs.next() ) {	
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
 		request.setAttribute("queryWeekNum", queryWeekNum);
 		request.setAttribute("queryPeopleNum", queryPeopleNum);
 		request.setAttribute("queryDayNum", queryDayNum);

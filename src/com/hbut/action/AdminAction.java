@@ -26,16 +26,20 @@ public class AdminAction extends ActionSupport{
 		request = ServletActionContext.getRequest();
 	}
 	
-/**
- * 排课
- * @return
- */
+	/**
+	 * 排课界面
+	 * @return
+	 */
 	public String scheduleCoursePage() {
 		String userNO = request.getParameter("UserNO").toString();
 		System.out.println(userNO);
 		return SUCCESS;
 	}
 	
+	/**
+	 * 教室查看
+	 * @return
+	 */
 	public String searchEmptyRoom() {
 		return SUCCESS;
 	}
@@ -49,6 +53,10 @@ public class AdminAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 提交排课信息
+	 * @return
+	 */
 	public String updateSchedule(){
 //		List<TeachProgramBean> tpList = new ArrayList<TeachProgramBean>();
 		String courseNO,roomNO,classNO,teacherNO;

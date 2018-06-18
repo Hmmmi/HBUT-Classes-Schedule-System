@@ -9,6 +9,10 @@ import com.hbut.util.ConnectSQL;
 
 public class ClassDao {
 	
+	/**
+	 * 返回所有班级
+	 * @return
+	 */
 	public static ResultSet queryClass() {
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
@@ -22,6 +26,11 @@ public class ClassDao {
 		return rs;
 	}
 	
+	/**
+	 * 根据班级号返回班级名称
+	 * @param classNO
+	 * @return
+	 */
 	public static String getClassName(String classNO) {
 		String classString = "";
 		ResultSet rs = null;

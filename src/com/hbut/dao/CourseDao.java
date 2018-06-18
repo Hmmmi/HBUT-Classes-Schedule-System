@@ -10,6 +10,10 @@ import com.hbut.util.ConnectSQL;
 
 public class CourseDao {
 	
+	/**
+	 * 添加课程
+	 * @param c  课程Bean对象
+	 */
 	public static void insertCourse(Course c){
 		Connection conn = ConnectSQL.getConnection();
 		String sql = "INSERT INTO hbut_course ("
@@ -32,6 +36,12 @@ public class CourseDao {
 		}
 	}
 	
+	/**
+	 * 插入选修课信息
+	 * @param c
+	 * @param peopleNum
+	 * @param userNO
+	 */
 	public static void insertSelectClass(Course c,int peopleNum,String userNO){
 		Connection conn = ConnectSQL.getConnection();
 		String sql = "INSERT INTO hbut_class(ClassNO,PeopleNum,Grade,Major,Ind)"
@@ -69,7 +79,10 @@ public class CourseDao {
 //		return map;
 //	}
 	
-	// 查询所有事件类型
+	/**
+	 * 查询所有课程信息
+	 * @return
+	 */
 	public static ResultSet queryCourse() {
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
@@ -83,6 +96,12 @@ public class CourseDao {
 		return rs;
 	}
 	
+	/**
+	 * 判断插入课程类型选择插入方法
+	 * @param c
+	 * @param peopleNum
+	 * @param userNO
+	 */
 	public static void saveCourse(Course c,int peopleNum,String userNO){
 		insertCourse(c);
 		//是公选课

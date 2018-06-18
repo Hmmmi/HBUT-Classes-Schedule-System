@@ -9,6 +9,14 @@ import com.hbut.util.ConnectSQL;
 
 public class RoomDao {
 	
+	/**
+	 * 更具查询条件查询教室情况
+	 * @param weekNum
+	 * @param dayNum
+	 * @param sectionNum
+	 * @param seatNum
+	 * @return
+	 */
 	public static ResultSet searchRoom(int weekNum,int dayNum,int sectionNum,int seatNum){
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
@@ -30,6 +38,12 @@ public class RoomDao {
 		return rs;
 	}
 	
+	/**
+	 * 返回课表中某天某节次空教室
+	 * @param weekNum
+	 * @param section
+	 * @return
+	 */
 	public static ResultSet queryRoom(int weekNum,int section) {
 		ResultSet rs = null;
 		Connection conn = ConnectSQL.getConnection();
@@ -45,17 +59,21 @@ public class RoomDao {
 		return rs;
 	}
 	
-	public static ResultSet queryAllRoom() {
-		ResultSet rs = null;
-		Connection conn = ConnectSQL.getConnection();
-		String sql = "select RoomNO,SeatNum from hbut_room ";
-		try{
-			PreparedStatement pstate = conn.prepareStatement(sql);
-			rs = pstate.executeQuery();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return rs;
-	}
+	/**
+	 * 查询所有的教室
+	 * @return
+	 */
+//	public static ResultSet queryAllRoom() {
+//		ResultSet rs = null;
+//		Connection conn = ConnectSQL.getConnection();
+//		String sql = "select RoomNO,SeatNum from hbut_room ";
+//		try{
+//			PreparedStatement pstate = conn.prepareStatement(sql);
+//			rs = pstate.executeQuery();
+//		}catch(SQLException e){
+//			e.printStackTrace();
+//		}
+//		return rs;
+//	}
 
 }
