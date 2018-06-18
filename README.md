@@ -6,5 +6,4 @@ DataBase Location:
 	jdbc.driverClassName=com.mysql.jdbc.Driver
 	jdbc.url=jdbc\:mysql\://localhost\:3306/hbut_class_database?useUnicode\\\=true&characterEncoding\\\=utf-8&autoReconnect\\\=true
 
-If you want to run this web project,you should create a same database,
-which has hbut_admin,hbut_class,hbut_room,hbut_student,hbut_teacher,hbut_course and hbut_teachprogram five tables.
+If you want to run this web project, you should create a same database, which has hbut_admin, hbut_class, hbut_room, hbut_student, hbut_teacher, hbut_course, hbut_teachprogram and hbut_electiveclass six tables.
