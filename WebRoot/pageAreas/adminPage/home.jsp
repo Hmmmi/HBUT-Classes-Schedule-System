@@ -45,14 +45,15 @@
 			</ul>
 			<ul>
 				<li id="liScheduleCoursePage" class="cur"
-					onclick="setIframe('liScheduleCoursePage','<%=basePath%>actionAdmin/scheduleCoursePage.action?UserNO=<%= request.getAttribute("UserNO") %>')"><a><i
+					onclick="setIframe('liScheduleCoursePage','<%=basePath%>actionAdmin/schedulePage.action?UserNO=<%= request.getAttribute("UserNO") %>')"><a><i
 						class="show"></i><em>手动排课</em></a></li>
 			</ul>
-<!-- 			<ul> -->
-<!-- 				<li id="lisearchRoom" -->
-<!-- 					onclick="setIframe('lisearchRoom','<%=basePath%>actionTeacher/searchEmptyRoom')"><a><i -->
-<!-- 						class="show"></i><em>教室查看</em></a></li> -->
-<!-- 			</ul> -->
+			
+			<ul>
+				<li id="liupdateSchedulePage"
+					onclick="setIframe('liupdateSchedulePage','<%=basePath%>actionAdmin/updateSchedulePage.action?UserNO=<%= request.getAttribute("UserNO") %>')"><a><i
+						class="show"></i><em>更新排课</em></a></li>
+			</ul>
 			
 		</div>
 	</div>
@@ -82,7 +83,7 @@
 		function setIframe(liId, iframeSrc) {
 			//先初始化所有空间的class属性
 			$("#liScheduleCoursePage").removeClass("cur");
-			$("#lisearchRoom").removeClass("cur");
+			$("#liupdateSchedulePage").removeClass("cur");
 // 			$("#liaddCourse").removeClass("cur");
 // 			设置跳转页面为iframeSrc,并设置对应的class属性为cur
 			$("#iframeAdmin").attr("src", iframeSrc);

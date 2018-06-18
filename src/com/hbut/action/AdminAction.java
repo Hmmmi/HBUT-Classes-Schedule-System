@@ -48,9 +48,9 @@ public class AdminAction extends ActionSupport{
 	 * 提交排课信息或首次进入排课界面将已有课程计划的节次直接显示课程信息
 	 * @return
 	 */
-	public String putupdateSchedule(){
+	public String schedulePage(){
 		scheduleClassNO = request.getParameter("scheduleClassNO");
-		request.setAttribute("action", "updateSchedule");
+		request.setAttribute("action", "submitSchedule");
 		//查询当前班级号为scheduleClassNO的课表
 		String[][] timeTable = TeachProgramDao.queryTimeTable(scheduleClassNO);
 		request.setAttribute("timeTable", timeTable);
@@ -61,7 +61,7 @@ public class AdminAction extends ActionSupport{
 	 * 提交排课信息
 	 * @return
 	 */
-	public String updateSchedule(){
+	public String submitSchedule(){
 //		List<TeachProgramBean> tpList = new ArrayList<TeachProgramBean>();
 		String courseNO,roomNO,classNO,teacherNO;
 		int startWeek,endWeek,section,weekNum;
@@ -90,5 +90,61 @@ public class AdminAction extends ActionSupport{
 		request.setAttribute("timeTable", timeTable);
 		return SUCCESS;
 	}
+	
+	/**
+	 * 更新排课信息界面
+	 * @return
+	 */
+	public String updateSchedulePage(){
+//		String userNO = request.getParameter("UserNO").toString();
+//		System.out.println(userNO);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String updateSchedule(){
+		scheduleClassNO = request.getParameter("scheduleClassNO");
+		request.setAttribute("action", "update");
+		//查询当前班级号为scheduleClassNO的课表
+		String[][] timeTable = TeachProgramDao.queryTimeTable(scheduleClassNO);
+//		showTable(timeTable);
+		request.setAttribute("timeTable", timeTable);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 更新排课信息
+	 * @return
+	 */
+	public String update(){
+		return SUCCESS;
+	}
+	
+//	private void showTable(String[][] table){
+//		System.out.println("--------------------------");
+//		for(int i = 0 ; i < 5 ; i++){
+//			for(int j = 0 ; j< 7 ; j++){
+//				if(table[i][j] != null){
+//					String[] x = table[i][j].split("<br>");
+//					String[] y = x[3].split("-|周");
+//					System.out.println("split1----------------");
+//					for(String a:x){
+//						System.out.print(a+"  ");
+//					}
+//					System.out.println("split1   y----------------");
+//					for(String a:y){
+//						System.out.print(a+"  ");
+//					}
+//					System.out.println("split2----------------");
+////					System.out.print(table[i][j]+" ");
+//				}
+//			}
+//			System.out.println();
+//		}
+//		System.out.println("--------------------------");
+//	}
 	
 }
