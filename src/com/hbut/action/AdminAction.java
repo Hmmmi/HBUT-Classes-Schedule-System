@@ -44,6 +44,10 @@ public class AdminAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 提交排课信息或首次进入排课界面将已有课程计划的节次直接显示课程信息
+	 * @return
+	 */
 	public String putupdateSchedule(){
 		scheduleClassNO = request.getParameter("scheduleClassNO");
 		request.setAttribute("action", "updateSchedule");
