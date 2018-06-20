@@ -10,7 +10,7 @@ import com.hbut.util.ConnectSQL;
 public class RoomDao {
 	
 	/**
-	 * 更具查询条件查询教室情况
+	 * 根据查询条件查询教室情况
 	 * @param weekNum
 	 * @param dayNum
 	 * @param sectionNum
@@ -63,17 +63,17 @@ public class RoomDao {
 	 * 查询所有的教室
 	 * @return
 	 */
-//	public static ResultSet queryAllRoom() {
-//		ResultSet rs = null;
-//		Connection conn = ConnectSQL.getConnection();
-//		String sql = "select RoomNO,SeatNum from hbut_room ";
-//		try{
-//			PreparedStatement pstate = conn.prepareStatement(sql);
-//			rs = pstate.executeQuery();
-//		}catch(SQLException e){
-//			e.printStackTrace();
-//		}
-//		return rs;
-//	}
+	public static ResultSet queryAllRoom() {
+		ResultSet rs = null;
+		Connection conn = ConnectSQL.getConnection();
+		String sql = "select RoomNO,SeatNum from hbut_room ";
+		try{
+			PreparedStatement pstate = conn.prepareStatement(sql);
+			rs = pstate.executeQuery();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
 }
